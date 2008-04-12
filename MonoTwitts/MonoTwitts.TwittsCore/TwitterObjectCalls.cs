@@ -152,80 +152,81 @@ namespace MonoTwitts
             return (Status[])(statuses.ToArray(typeof(Status)));
         }
         
-        public static Status GetStatusObject(string xml)
-        {
-            Status status = new Status();
-            status.User = new User();
-
-            XmlTextReader reader = new XmlTextReader(new StringReader(xml));
-
-            while(reader.Read()) {
-                if(reader.NodeType == XmlNodeType.Element) {
-                    if(reader.LocalName != "statuses" &&
-                       reader.LocalName != "status" &&
-                       reader.LocalName != "user" &&
-                       reader.IsStartElement()) {
-                        switch(reader.LocalName) {
-                            case "created_at":
-                                status.Created = reader.ReadString();
-                                break;
-                            case "id":
-                                //Validation for status_id or user_id
-                                if(status.StatusId == null) {
-                                	status.StatusId = reader.ReadString();
-                                } else {
-                                    status.User.Id = reader.ReadString();
-                                }
-                                break;
-                            case "text":
-                                status.Text = reader.ReadString();
-                                break;
-                            case "source":
-                                status.Source = reader.ReadString();
-                                break;
-                            case "truncated":
-                                status.Truncated = (reader.ReadString() == "true") ? true : false;
-                                break;
-                            case "in_reply_to":
-                                status.InReplyTo = reader.ReadString();
-                                break;
-                            case "in_reply_to_user_id":
-                                status.InReplyToUserId = reader.ReadString();
-                                break;
-                                //User data
-                            case "name":
-                                status.User.Name = reader.ReadString();
-                                break;
-                            case "screen_name":
-                                status.User.ScreenName = reader.ReadString();
-                                break;
-                            case "location":
-                                status.User.Location = reader.ReadString();
-                                break;
-                            case "description":
-                                status.User.Description = reader.ReadString();
-                                break;
-                            case "profile_image_url":
-                                status.User.ProfileImageUrl = reader.ReadString();
-                                break;
-                            case "url":
-                                status.User.Url = reader.ReadString();
-                                break;
-                            case "protected":
-                                status.User.UpdatesProtected = (reader.ReadString() == "true") ? true : false;
-                                break;
-                            case "followers_count":
-                                status.User.FollowersCount = int.Parse(reader.ReadString());
-                                break;
-                            default:
-                                throw new System.Exception(String.Format("ERROR: Element {0} is not taken",
-                                                            reader.LocalName));
-                        }
-                    }
-                }
-            }
-
-            return status;
-        }
+        //FIXME: I don't really know if this need to be added, it looks redundant for me
+//        public static Status GetStatusObject(string xml)
+//        {
+//            Status status = new Status();
+//            status.User = new User();
+//
+//            XmlTextReader reader = new XmlTextReader(new StringReader(xml));
+//
+//            while(reader.Read()) {
+//                if(reader.NodeType == XmlNodeType.Element) {
+//                    if(reader.LocalName != "statuses" &&
+//                       reader.LocalName != "status" &&
+//                       reader.LocalName != "user" &&
+//                       reader.IsStartElement()) {
+//                        switch(reader.LocalName) {
+//                            case "created_at":
+//                                status.Created = reader.ReadString();
+//                                break;
+//                            case "id":
+//                                //Validation for status_id or user_id
+//                                if(status.StatusId == null) {
+//                                	status.StatusId = reader.ReadString();
+//                                } else {
+//                                    status.User.Id = reader.ReadString();
+//                                }
+//                                break;
+//                            case "text":
+//                                status.Text = reader.ReadString();
+//                                break;
+//                            case "source":
+//                                status.Source = reader.ReadString();
+//                                break;
+//                            case "truncated":
+//                                status.Truncated = (reader.ReadString() == "true") ? true : false;
+//                                break;
+//                            case "in_reply_to":
+//                                status.InReplyTo = reader.ReadString();
+//                                break;
+//                            case "in_reply_to_user_id":
+//                                status.InReplyToUserId = reader.ReadString();
+//                                break;
+//                                //User data
+//                            case "name":
+//                                status.User.Name = reader.ReadString();
+//                                break;
+//                            case "screen_name":
+//                                status.User.ScreenName = reader.ReadString();
+//                                break;
+//                            case "location":
+//                                status.User.Location = reader.ReadString();
+//                                break;
+//                            case "description":
+//                                status.User.Description = reader.ReadString();
+//                                break;
+//                            case "profile_image_url":
+//                                status.User.ProfileImageUrl = reader.ReadString();
+//                                break;
+//                            case "url":
+//                                status.User.Url = reader.ReadString();
+//                                break;
+//                            case "protected":
+//                                status.User.UpdatesProtected = (reader.ReadString() == "true") ? true : false;
+//                                break;
+//                            case "followers_count":
+//                                status.User.FollowersCount = int.Parse(reader.ReadString());
+//                                break;
+//                            default:
+//                                throw new System.Exception(String.Format("ERROR: Element {0} is not taken",
+//                                                            reader.LocalName));
+//                        }
+//                    }
+//                }
+//            }
+//
+//            return status;
+//        }
     }
 }

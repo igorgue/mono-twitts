@@ -1,9 +1,9 @@
 ﻿<UserCombinePreferences version="1.0" filename="/home/igor/Projects/MonoTwitts/MonoTwitts.mds">
   <Files>
-    <File name="MonoTwitts/MonoTwitts.TwittsCore/TwitterObjectCalls.cs" line="65" column="23" />
-    <File name="MonoTwitts/Main.cs" line="49" column="13" />
-    <File name="MonoTwitts/MonoTwitts.TwittsCore/TwitterCore.cs" line="200" column="32" />
-    <File name="MonoTwitts/MainWindow.cs" line="1" column="1" />
+    <File name="MonoTwitts/MonoTwitts.TwittsCore/TwitterCore.cs" line="26" column="18" />
+    <File name="MonoTwitts/MonoTwitts.TwittsCore/TwitterObjectCalls.cs" line="27" column="18" />
+    <File name="MonoTwitts/MonoTwitts.TwittsCore/User.cs" line="1" column="1" />
+    <File name="MonoTwitts/MonoTwitts.TwittsCore/Status.cs" line="1" column="1" />
   </Files>
   <Views>
     <ViewMemento id="ProjectPad">
@@ -12,8 +12,9 @@
         <Option id="ShowVersionControlOverlays" value="True" />
         <Option id="ShowAllFiles" value="False" />
         <Node name="MonoTwitts" expanded="True">
-          <Node name="MonoTwitts.TwittsCore" expanded="True" />
-          <Node name="Main.cs" selected="True" />
+          <Node name="MonoTwitts.TwittsCore" expanded="True">
+            <Node name="Status.cs" selected="True" />
+          </Node>
         </Node>
       </Node>
     </ViewMemento>
@@ -21,9 +22,9 @@
       <Node expanded="True">
         <Option id="ShowProjects" value="False" />
         <Option id="NestedNamespaces" value="True" />
-        <Option id="GroupByAccess" value="True" />
         <Option id="PublicApiOnly" value="False" />
         <Option id="GroupByType" value="False" />
+        <Option id="GroupByAccess" value="True" />
       </Node>
     </ViewMemento>
   </Views>
