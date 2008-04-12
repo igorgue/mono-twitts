@@ -5,7 +5,18 @@
     <target-gtk-version>2.12.0</target-gtk-version>
   </configuration>
   <widget class="Gtk.Window" id="MainWindow" design-size="400 300">
-    <action-group name="Default" />
+    <action-group name="Default">
+      <action id="MenuAction">
+        <property name="Type">Action</property>
+        <property name="Label" translatable="yes">Menu</property>
+        <property name="ShortLabel" translatable="yes">Menu</property>
+      </action>
+      <action id="HelpAction">
+        <property name="Type">Action</property>
+        <property name="Label" translatable="yes">Help</property>
+        <property name="ShortLabel" translatable="yes">Help</property>
+      </action>
+    </action-group>
     <property name="MemberName" />
     <property name="Title" translatable="yes">MainWindow</property>
     <property name="WindowPosition">CenterOnParent</property>
@@ -17,7 +28,10 @@
         <child>
           <widget class="Gtk.MenuBar" id="menubar1">
             <property name="MemberName" />
-            <node name="menubar1" type="Menubar" />
+            <node name="menubar1" type="Menubar">
+              <node type="Menu" action="MenuAction" />
+              <node type="Menu" action="HelpAction" />
+            </node>
           </widget>
           <packing>
             <property name="Position">0</property>
