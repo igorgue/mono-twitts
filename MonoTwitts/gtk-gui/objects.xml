@@ -1,0 +1,8 @@
+<objects>
+  <object type="MonoTwitts.Ui.StatusViewItem" palette-category="MonoTwitts" allow-children="false" base-type="Gtk.HBox">
+    <itemgroups>
+    </itemgroups>
+    <signals>
+    </signals>
+  </object>
+</objects>
