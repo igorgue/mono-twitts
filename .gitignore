@@ -1,5 +1,9 @@
+*.swp
 *.pidb
 MonoTwitts/bin/*
 MonoTwitts.userprefs
 MonoTwitts.usertasks
+config.log
+config.make
+MonoTwitts/monotwitts
 
