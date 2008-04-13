@@ -22,12 +22,12 @@
 //
 
 using System;
-using System.Xml;
-using System.Xml.XPath;
-using System.Collections;
 
 namespace MonoTwitts.Core
-{    
+{
+    /// <summary>
+    /// Define a status from twitter user
+    /// </summary>
     public class Status
     {   
         // Status related
@@ -44,6 +44,9 @@ namespace MonoTwitts.Core
         
         public Status() { }
         
+        /// <value>
+        /// Given a twitter datetime string we create and return a C# DateTime
+        /// </value>
         public object Created {
             set {
                 string time = ((string)value).Substring(4);

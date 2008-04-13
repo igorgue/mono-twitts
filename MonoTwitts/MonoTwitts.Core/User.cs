@@ -24,7 +24,10 @@
 using System;
 
 namespace MonoTwitts.Core
-{   
+{
+    /// <summary>
+    /// Define user's data
+    /// </summary>
     public class User
     {
         private string id = null;

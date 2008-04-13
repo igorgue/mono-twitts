@@ -29,12 +29,19 @@ using System.IO;
 using System.Net;
 using System.Xml;
 using System.Web;
-using System.Collections.Generic;
 using System.Text;
 
 namespace MonoTwitts.Core
 {
-	public class Core {
+    /// <summary>
+    /// This does all the dirty work with the Twitter RESTful API
+    /// </summary>
+	public class Core
+    {
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        public Core() { }
 
 		/// <summary>
 		/// The output formats supported by Twitter. Not all of them can be used with all of the functions.
