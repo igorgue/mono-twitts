@@ -33,16 +33,6 @@ namespace MonoTwitts
     {   
         public static void Main(string[] args)
         {
-            //TwitterObjectCalls.Update("igorgue", "igf123", "Test test test2");
-//            Status[] statusArray = TwitterObjectCalls.GetUserTimeline("igorgue", "igf123");
-//            
-//            System.Console.WriteLine(String.Format("Number of Twitts: {0}", statusArray.Length));
-//            foreach (Status st in statusArray) {
-//                if(!string.IsNullOrEmpty(st.StatusId)) {
-//                    System.Console.WriteLine("User: {0}\nWeb: {1}\nText: {2}", st.User.Id, st.User.Url, st.Text);
-//                    System.Console.WriteLine("*********************");	
-//                }
-//            }
             Application.Init();
             
             MainWindow mainWindow = new MainWindow();
