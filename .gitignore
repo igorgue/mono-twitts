@@ -1,3 +1,5 @@
 *.pidb
 MonoTwitts/bin/*
+MonoTwitts.userprefs
+MonoTwitts.usertasks
 
