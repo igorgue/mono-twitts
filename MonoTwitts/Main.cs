@@ -24,7 +24,8 @@
 
 using System;
 using Gtk;
-using MonoTwitts;
+
+using MonoTwitts.Ui;
 
 namespace MonoTwitts
 {

@@ -4,17 +4,26 @@
     <images-root-path>..</images-root-path>
     <target-gtk-version>2.12.0</target-gtk-version>
   </configuration>
-  <widget class="Gtk.Window" id="MainWindow" design-size="400 300">
+  <widget class="Gtk.Window" id="MonoTwitts.Ui.MainWindow" design-size="400 300">
     <action-group name="Default">
       <action id="MenuAction">
         <property name="Type">Action</property>
+        <property name="Accelerator">&lt;Control&gt;m</property>
         <property name="Label" translatable="yes">Menu</property>
         <property name="ShortLabel" translatable="yes">Menu</property>
       </action>
       <action id="HelpAction">
         <property name="Type">Action</property>
+        <property name="Accelerator">&lt;Control&gt;h</property>
         <property name="Label" translatable="yes">Help</property>
         <property name="ShortLabel" translatable="yes">Help</property>
+      </action>
+      <action id="AboutAction">
+        <property name="Type">Action</property>
+        <property name="Label" translatable="yes">About</property>
+        <property name="ShortLabel" translatable="yes">About</property>
+        <property name="StockId">gtk-about</property>
+        <signal name="Activated" handler="OnAboutActionActivated" />
       </action>
     </action-group>
     <property name="MemberName" />
@@ -30,7 +39,9 @@
             <property name="MemberName" />
             <node name="menubar1" type="Menubar">
               <node type="Menu" action="MenuAction" />
-              <node type="Menu" action="HelpAction" />
+              <node type="Menu" action="HelpAction">
+                <node type="Menuitem" action="AboutAction" />
+              </node>
             </node>
           </widget>
           <packing>
@@ -45,7 +56,7 @@
             <property name="MemberName" />
             <property name="ShowArrow">False</property>
             <property name="ButtonStyle">Icons</property>
-            <node name="toolbar1" type="Menubar" />
+            <node name="toolbar1" type="Toolbar" />
           </widget>
           <packing>
             <property name="Position">1</property>
