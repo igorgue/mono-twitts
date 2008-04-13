@@ -25,26 +25,79 @@
 using System;
 using Gtk;
 
+using MonoTwitts.Core;
+
 namespace MonoTwitts.Ui
 {
+    /// <summary>
+    /// Application window
+    /// </summary>
     public partial class MainWindow: Gtk.Window
-    {    
-        public MainWindow (): base (Gtk.WindowType.Toplevel)
+    {
+        private VBox areaStatus;
+        private Viewport w4;
+        
+        /// <summary>
+        /// Add the twitts to the box
+        /// </summary>
+        public void AddTwitts()
         {
-            Build ();
+            if(w4 != null) {
+                w4.Destroy();
+                w4 = null;   
+            }
+            w4 = new Gtk.Viewport();
+            w4.ShadowType = ((Gtk.ShadowType)(0));
+            
+            scrolledwindow.Add(w4);
+            areaStatus = null;
+            scrolledwindow.Remove(areaStatus);
+            
+            // Container child GtkViewport.Gtk.Container+ContainerChild
+            areaStatus = new Gtk.VBox();
+            areaStatus.Name = "areaStatus";
+            areaStatus.Spacing = 6;
+            
+            w4.Add(areaStatus);
+            scrolledwindow.Add(w4);
+            
+            Status[] sts = ObjectCalls.GetPublicTimeline();
+            foreach(Status st in sts) {
+                StatusViewItem stItem = new StatusViewItem(st);
+                areaStatus.Add(stItem);
+                if(st.StatusId != sts[sts.Length - 1].StatusId)
+                    areaStatus.Add(new Gtk.HSeparator());
+            }
         }
         
-        protected void OnDeleteEvent (object sender, DeleteEventArgs a)
+        /// <summary>
+        /// Default constructor
+        /// </summary>
+        public MainWindow(): base(Gtk.WindowType.Toplevel)
+        {
+            Build ();
+            this.WidthRequest = 400;
+            this.HeightRequest = 300;
+            AddTwitts();
+        }
+        
+        protected void OnDeleteEvent(object sender, DeleteEventArgs a)
         {
             Application.Quit ();
             a.RetVal = true;
         }
         
-        protected virtual void OnAboutActionActivated (object sender, System.EventArgs e)
+        protected virtual void OnAboutActionActivated(object sender, System.EventArgs e)
         {
             AboutDialog aboutus = new AboutDialog();
             aboutus.Run();
             aboutus.Destroy();
+        }
+
+        protected virtual void OnRefreshActionActivated (object sender, System.EventArgs e)
+        {
+            //FIXME: Not workee
+            //AddTwitts();
         }
     }
 }

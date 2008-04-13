@@ -19,11 +19,25 @@ namespace MonoTwitts.Ui {
         
         private Gtk.Action AboutAction;
         
+        private Gtk.RadioAction FriendsAction;
+        
+        private Gtk.RadioAction PublicAction;
+        
+        private Gtk.RadioAction DirectAction;
+        
+        private Gtk.RadioAction ResponsesAction;
+        
+        private Gtk.Action PreferencesAction;
+        
+        private Gtk.Action RefreshAction;
+        
+        private Gtk.Action QuitAction;
+        
         private Gtk.VBox vbox1;
         
-        private Gtk.MenuBar menubar1;
+        private Gtk.MenuBar menubar;
         
-        private Gtk.Toolbar toolbar1;
+        private Gtk.ScrolledWindow scrolledwindow;
         
         protected virtual void Build() {
             Stetic.Gui.Initialize(this);
@@ -39,44 +53,68 @@ namespace MonoTwitts.Ui {
             this.AboutAction = new Gtk.Action("AboutAction", Mono.Unix.Catalog.GetString("About"), null, "gtk-about");
             this.AboutAction.ShortLabel = Mono.Unix.Catalog.GetString("About");
             w2.Add(this.AboutAction, null);
+            this.FriendsAction = new Gtk.RadioAction("FriendsAction", Mono.Unix.Catalog.GetString("Friends"), null, null, 0);
+            this.FriendsAction.Group = new GLib.SList(System.IntPtr.Zero);
+            this.FriendsAction.ShortLabel = Mono.Unix.Catalog.GetString("Friends");
+            w2.Add(this.FriendsAction, null);
+            this.PublicAction = new Gtk.RadioAction("PublicAction", Mono.Unix.Catalog.GetString("Public"), null, null, 0);
+            this.PublicAction.Group = this.FriendsAction.Group;
+            this.PublicAction.ShortLabel = Mono.Unix.Catalog.GetString("Public");
+            w2.Add(this.PublicAction, null);
+            this.DirectAction = new Gtk.RadioAction("DirectAction", Mono.Unix.Catalog.GetString("Direct"), null, null, 0);
+            this.DirectAction.Group = this.PublicAction.Group;
+            this.DirectAction.ShortLabel = Mono.Unix.Catalog.GetString("Direct");
+            w2.Add(this.DirectAction, null);
+            this.ResponsesAction = new Gtk.RadioAction("ResponsesAction", Mono.Unix.Catalog.GetString("@ Responses"), null, null, 0);
+            this.ResponsesAction.Group = this.PublicAction.Group;
+            this.ResponsesAction.ShortLabel = Mono.Unix.Catalog.GetString("@ Responses");
+            w2.Add(this.ResponsesAction, null);
+            this.PreferencesAction = new Gtk.Action("PreferencesAction", Mono.Unix.Catalog.GetString("Preferences"), null, "gtk-preferences");
+            this.PreferencesAction.ShortLabel = Mono.Unix.Catalog.GetString("Preferences");
+            w2.Add(this.PreferencesAction, null);
+            this.RefreshAction = new Gtk.Action("RefreshAction", Mono.Unix.Catalog.GetString("Refresh"), null, "gtk-refresh");
+            this.RefreshAction.ShortLabel = Mono.Unix.Catalog.GetString("Refresh");
+            w2.Add(this.RefreshAction, null);
+            this.QuitAction = new Gtk.Action("QuitAction", Mono.Unix.Catalog.GetString("Quit"), null, "gtk-quit");
+            this.QuitAction.ShortLabel = Mono.Unix.Catalog.GetString("Quit");
+            w2.Add(this.QuitAction, null);
             w1.InsertActionGroup(w2, 0);
             this.AddAccelGroup(w1.AccelGroup);
             this.Name = "MonoTwitts.Ui.MainWindow";
-            this.Title = Mono.Unix.Catalog.GetString("MainWindow");
+            this.Title = Mono.Unix.Catalog.GetString("Mono Twitt");
             this.WindowPosition = ((Gtk.WindowPosition)(4));
             // Container child MonoTwitts.Ui.MainWindow.Gtk.Container+ContainerChild
             this.vbox1 = new Gtk.VBox();
             this.vbox1.Name = "vbox1";
             this.vbox1.Spacing = 6;
             // Container child vbox1.Gtk.Box+BoxChild
-            w1.AddUiFromString("<ui><menubar name='menubar1'><menu action='MenuAction'/><menu action='HelpAction'><menuitem action='AboutAction'/></menu></menubar></ui>");
-            this.menubar1 = ((Gtk.MenuBar)(w1.GetWidget("/menubar1")));
-            this.menubar1.Name = "menubar1";
-            this.vbox1.Add(this.menubar1);
-            Gtk.Box.BoxChild w3 = ((Gtk.Box.BoxChild)(this.vbox1[this.menubar1]));
+            w1.AddUiFromString("<ui><menubar name='menubar'><menu action='MenuAction'><menuitem action='RefreshAction'/><separator/><menuitem action='FriendsAction'/><menuitem action='PublicAction'/><menuitem action='DirectAction'/><menuitem action='ResponsesAction'/><separator/><menuitem action='PreferencesAction'/><separator/><menuitem action='QuitAction'/></menu><menu action='HelpAction'><menuitem action='AboutAction'/></menu></menubar></ui>");
+            this.menubar = ((Gtk.MenuBar)(w1.GetWidget("/menubar")));
+            this.menubar.Name = "menubar";
+            this.vbox1.Add(this.menubar);
+            Gtk.Box.BoxChild w3 = ((Gtk.Box.BoxChild)(this.vbox1[this.menubar]));
             w3.Position = 0;
             w3.Expand = false;
             w3.Fill = false;
             // Container child vbox1.Gtk.Box+BoxChild
-            w1.AddUiFromString("<ui><toolbar name='toolbar1'/></ui>");
-            this.toolbar1 = ((Gtk.Toolbar)(w1.GetWidget("/toolbar1")));
-            this.toolbar1.Name = "toolbar1";
-            this.toolbar1.ShowArrow = false;
-            this.toolbar1.ToolbarStyle = ((Gtk.ToolbarStyle)(0));
-            this.vbox1.Add(this.toolbar1);
-            Gtk.Box.BoxChild w4 = ((Gtk.Box.BoxChild)(this.vbox1[this.toolbar1]));
+            this.scrolledwindow = new Gtk.ScrolledWindow();
+            this.scrolledwindow.CanFocus = true;
+            this.scrolledwindow.Name = "scrolledwindow";
+            this.scrolledwindow.ShadowType = ((Gtk.ShadowType)(4));
+            this.scrolledwindow.BorderWidth = ((uint)(5));
+            this.vbox1.Add(this.scrolledwindow);
+            Gtk.Box.BoxChild w4 = ((Gtk.Box.BoxChild)(this.vbox1[this.scrolledwindow]));
             w4.Position = 1;
-            w4.Expand = false;
-            w4.Fill = false;
             this.Add(this.vbox1);
             if ((this.Child != null)) {
                 this.Child.ShowAll();
             }
-            this.DefaultWidth = 400;
-            this.DefaultHeight = 300;
+            this.DefaultWidth = 413;
+            this.DefaultHeight = 455;
             this.Show();
             this.DeleteEvent += new Gtk.DeleteEventHandler(this.OnDeleteEvent);
             this.AboutAction.Activated += new System.EventHandler(this.OnAboutActionActivated);
+            this.RefreshAction.Activated += new System.EventHandler(this.OnRefreshActionActivated);
         }
     }
 }

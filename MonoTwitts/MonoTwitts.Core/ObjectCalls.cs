@@ -221,8 +221,9 @@ namespace MonoTwitts.Core
                         }
                     }
 
-                    if(reader.LocalName == "status") {
-                        statuses.Add(status);
+                    if(reader.LocalName == "status" && reader.IsStartElement()) {
+                        if(!string.IsNullOrEmpty(status.StatusId))
+                            statuses.Add(status);
                         status = null;
                         status = new Status();
                         status.User = new User();
