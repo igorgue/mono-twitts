@@ -44,23 +44,23 @@ RESGEN=resgen2
 
 MONOTWITTS = $(BUILD_DIR)/monotwitts
 
-FILES = \
-	gtk-gui/generated.cs \
-	Main.cs \
+FILES =  \
 	AssemblyInfo.cs \
-	MonoTwitts.Core/Status.cs \
+	gtk-gui/generated.cs \
+	gtk-gui/MonoTwitts.Ui.MainWindow.cs \
+	gtk-gui/MonoTwitts.Ui.StatusViewItem.cs \
+	Main.cs \
 	MonoTwitts.Core/Core.cs \
-	MonoTwitts.Core/User.cs \
 	MonoTwitts.Core/ObjectCalls.cs \
+	MonoTwitts.Core/Status.cs \
+	MonoTwitts.Core/User.cs \
 	MonoTwitts.Ui/AboutDialog.cs \
 	MonoTwitts.Ui/MainWindow.cs \
-	gtk-gui/MonoTwitts.Ui.MainWindow.cs \
-	MonoTwitts.Ui/StatusViewItem.cs \
-	gtk-gui/MonoTwitts.Ui.StatusViewItem.cs 
+	MonoTwitts.Ui/StatusViewItem.cs 
 
 DATA_FILES = 
 
-RESOURCES = \
+RESOURCES =  \
 	gtk-gui/gui.stetic \
 	gtk-gui/objects.xml 
 
@@ -69,15 +69,15 @@ EXTRAS = \
 	monotwitts.in 
 
 REFERENCES =  \
-	-pkg:gtk-sharp-2.0 \
-	-pkg:glib-sharp-2.0 \
-	-pkg:glade-sharp-2.0 \
-	System \
 	Mono.Posix \
-	System.Xml \
-	System.Web \
+	-pkg:glade-sharp-2.0 \
+	-pkg:glib-sharp-2.0 \
 	-pkg:gnome-sharp-2.0 \
-	-pkg:gnome-vfs-sharp-2.0
+	-pkg:gnome-vfs-sharp-2.0 \
+	-pkg:gtk-sharp-2.0 \
+	System \
+	System.Web \
+	System.Xml
 
 DLL_REFERENCES = 
 

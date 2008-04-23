@@ -66,7 +66,7 @@ namespace MonoTwitts.Ui {
             this.DirectAction.ShortLabel = Mono.Unix.Catalog.GetString("Direct");
             w2.Add(this.DirectAction, null);
             this.ResponsesAction = new Gtk.RadioAction("ResponsesAction", Mono.Unix.Catalog.GetString("@ Responses"), null, null, 0);
-            this.ResponsesAction.Group = this.FriendsAction.Group;
+            this.ResponsesAction.Group = this.DirectAction.Group;
             this.ResponsesAction.ShortLabel = Mono.Unix.Catalog.GetString("@ Responses");
             w2.Add(this.ResponsesAction, null);
             this.PreferencesAction = new Gtk.Action("PreferencesAction", Mono.Unix.Catalog.GetString("Preferences"), null, "gtk-preferences");

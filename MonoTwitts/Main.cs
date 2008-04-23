@@ -36,6 +36,7 @@ namespace MonoTwitts
         {
             Application.Init();
             
+            Console.WriteLine("Log!!!");
             MainWindow mainWindow = new MainWindow();
             mainWindow.ShowAll();
             
