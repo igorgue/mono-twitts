@@ -30,17 +30,16 @@ using MonoTwitts.Core;
 
 namespace MonoTwitts
 {
-    class MainClass
-    {   
-        public static void Main(string[] args)
-        {
-            Application.Init();
-            
-            Console.WriteLine("Log!!!");
-            MainWindow mainWindow = new MainWindow();
-            mainWindow.ShowAll();
-            
-            Application.Run();
+        class MainClass
+        {   
+                public static void Main (string [] args)
+                {
+                        Application.Init ();
+                        
+                        MainWindow mainWindow = new MainWindow ();
+                        mainWindow.ShowAll ();
+                        
+                        Application.Run ();
+                }
         }
-    }
 }

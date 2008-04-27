@@ -29,34 +29,35 @@ using MonoTwitts.Core;
 
 namespace MonoTwitts.Ui
 {
-    /// <summary>
-    /// A entry to the Twitts view
-    /// </summary>
-    public partial class StatusViewItem: Gtk.Bin
-    {
-        private Status status;
-        
         /// <summary>
-        /// Create a StatusViewItem from a status object
+        /// A entry to the Twitts view
         /// </summary>
-        /// <param name="status">
-        /// A <see cref="Status"/>
-        /// </param>
-        public StatusViewItem(Status st)
+        public partial class StatusViewItem: Gtk.Bin
         {
-            this.Build();
-            
-            status = st;
-            
-            // Set status data
-            text.Text = status.Text;
-            username.Label = status.User.Name;
-            dateTime.Text = status.Created.ToString();
+                private Status status;
+                
+                /// <summary>
+                /// Create a StatusViewItem from a status object
+                /// </summary>
+                /// <param name="status">
+                /// A <see cref="Status"/>
+                /// </param>
+                public StatusViewItem (Status st)
+                {
+                        this.Build ();
+                        
+                        status = st;
+                        
+                        // Set status data
+                        text.Text = status.Text;
+                        username.Label = status.User.Name;
+                        dateTime.Text = status.Created.ToString ();
+                }
+                
+                protected virtual void OnUsernameClicked (object sender, System.EventArgs e)
+                {
+                        Gnome.Url.Show (String.Format ("http://twitter.com/{0}",
+                                                       status.User.ScreenName));
+                }
         }
-
-        protected virtual void OnUsernameClicked(object sender, System.EventArgs e)
-        {
-            Gnome.Url.Show(String.Format("http://twitter.com/{0}", status.User.ScreenName));
-        }
-    }
 }

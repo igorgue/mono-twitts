@@ -25,66 +25,71 @@ using System;
 
 namespace MonoTwitts.Core
 {
-    /// <summary>
-    /// Define user's data
-    /// </summary>
-    public class User
-    {
-        private string id = null;
-        private string name = null;
-        private string screenName = null;
-        private string location = null;
-        private string description = null;
-        private string profileImageUrl = null;
-        private string url = null;
-        private bool updatesProtected = false;
-        private int followersCount;
-        
-        public User() { }
-        
-        public string Id {
-            set { id = value; }
-            get { return id; }
+        /// <summary>
+        /// Define user's data
+        /// </summary>
+        public class User
+        {
+                private string id = null;
+                private string name = null;
+                private string screenName = null;
+                private string location = null;
+                private string description = null;
+                private string profile_image_url = null;
+                private string url = null;
+                private bool updates_protected = false;
+                private int followers_count;
+                
+                /// <summary>
+                /// Constructor
+                /// </summary>
+                public User ()
+                {
+                }
+                
+                public string Id {
+                        set { id = value; }
+                        get { return id; }
+                }
+                
+                public string Name {
+                        set { name = value; }
+                        get { return name; }
+                }
+                
+                public string ScreenName {
+                        set { screenName = value; }
+                        get { return screenName; }
+                }
+                
+                public string Location {
+                        set { location = value; }
+                        get { return location; }
+                }
+                
+                public string Description {
+                        set { description = value; }
+                        get { return description; }
+                }
+                
+                public string ProfileImageUrl {
+                        set { profile_image_url = value; }
+                        get { return profile_image_url; }
+                }
+                
+                public string Url {
+                        set { url = value; }
+                        get { return url; }
+                }
+                
+                public bool UpdatesProtected {
+                        set { updates_protected = value; }
+                        get { return updates_protected; }
+                }
+                
+                public int FollowersCount {
+                        set { followers_count = value; }
+                        get { return followers_count; }
+                }
         }
-        
-        public string Name {
-            set { name = value; }
-            get { return name; }
-        }
-        
-        public string ScreenName {
-            set { screenName = value; }
-            get { return screenName; }
-        }
-        
-        public string Location {
-            set { location = value; }
-            get { return location; }
-        }
-        
-        public string Description {
-            set { description = value; }
-            get { return description; }
-        }
-        
-        public string ProfileImageUrl {
-            set { profileImageUrl = value; }
-            get { return profileImageUrl; }
-        }
-        
-        public string Url {
-            set { url = value; }
-            get { return url; }
-        }
-        
-        public bool UpdatesProtected {
-            set { updatesProtected = value; }
-            get { return updatesProtected; }
-        }
-        
-        public int FollowersCount {
-            set { followersCount = value; }
-            get { return followersCount; }
-        }
-    }
 }

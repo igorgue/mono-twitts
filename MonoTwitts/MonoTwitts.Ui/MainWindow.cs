@@ -29,75 +29,75 @@ using MonoTwitts.Core;
 
 namespace MonoTwitts.Ui
 {
-    /// <summary>
-    /// Application window
-    /// </summary>
-    public partial class MainWindow: Gtk.Window
-    {
-        private VBox areaStatus;
-        private Viewport w4;
-        
         /// <summary>
-        /// Add the twitts to the box
+        /// Application window
         /// </summary>
-        public void AddTwitts()
+        public partial class MainWindow: Gtk.Window
         {
-            if(w4 != null) {
-                w4.Destroy();
-                w4 = null;   
-            }
-            w4 = new Gtk.Viewport();
-            w4.ShadowType = ((Gtk.ShadowType)(0));
-            
-            scrolledwindow.Add(w4);
-            areaStatus = null;
-            scrolledwindow.Remove(areaStatus);
-            
-            // Container child GtkViewport.Gtk.Container+ContainerChild
-            areaStatus = new Gtk.VBox();
-            areaStatus.Name = "areaStatus";
-            areaStatus.Spacing = 6;
-            
-            w4.Add(areaStatus);
-            scrolledwindow.Add(w4);
-            
-            Status[] sts = ObjectCalls.GetPublicTimeline();
-            foreach(Status st in sts) {
-                StatusViewItem stItem = new StatusViewItem(st);
-                areaStatus.Add(stItem);
-                if(st.StatusId != sts[sts.Length - 1].StatusId)
-                    areaStatus.Add(new Gtk.HSeparator());
-            }
-        }
+                private VBox area_status;
+                private Viewport w4;
+                
+                /// <summary>
+                /// Add the twitts to the box
+                /// </summary>
+                public void AddTwitts()
+                {
+                        if (w4 != null) {
+                                w4.Destroy ();
+                                w4 = null;
+                        }
+                        w4 = new Gtk.Viewport ();
+                        w4.ShadowType = ((Gtk.ShadowType)(0));
+                        
+                        scrolledwindow.Add (w4);
+                        area_status = null;
+                        scrolledwindow.Remove (area_status);
+                        
+                        // Container child GtkViewport.Gtk.Container+ContainerChild
+                        area_status = new Gtk.VBox ();
+                        area_status.Name = "area_status";
+                        area_status.Spacing = 6;
+                        
+                        w4.Add (area_status);
+                        scrolledwindow.Add (w4);
+                        
+                        Status [] sts = ObjectCalls.GetPublicTimeline ();
+                        foreach (Status st in sts) {
+                        StatusViewItem stItem = new StatusViewItem (st);
+                        area_status.Add (stItem);
+                        if (st.StatusId != sts [sts.Length - 1].StatusId)
+                                area_status.Add (new Gtk.HSeparator ());
+                        }
+                }
+                
+                /// <summary>
+                /// Default constructor
+                /// </summary>
+                public MainWindow (): base (Gtk.WindowType.Toplevel)
+                {
+                        Build ();
+                        this.WidthRequest = 400;
+                        this.HeightRequest = 300;
+                        AddTwitts ();
+                }
+                
+                protected void OnDeleteEvent (object sender, DeleteEventArgs a)
+                {
+                        Application.Quit ();
+                        a.RetVal = true;
+                }
         
-        /// <summary>
-        /// Default constructor
-        /// </summary>
-        public MainWindow(): base(Gtk.WindowType.Toplevel)
-        {
-            Build ();
-            this.WidthRequest = 400;
-            this.HeightRequest = 300;
-            AddTwitts();
-        }
+                protected virtual void OnAboutActionActivated (object sender, System.EventArgs e)
+                {
+                        AboutDialog aboutus = new AboutDialog ();
+                        aboutus.Run ();
+                        aboutus.Destroy ();
+                }
         
-        protected void OnDeleteEvent(object sender, DeleteEventArgs a)
-        {
-            Application.Quit ();
-            a.RetVal = true;
+                protected virtual void OnRefreshActionActivated (object sender, System.EventArgs e)
+                {
+                        //FIXME: Not workee
+                        //AddTwitts();
+                }
         }
-        
-        protected virtual void OnAboutActionActivated(object sender, System.EventArgs e)
-        {
-            AboutDialog aboutus = new AboutDialog();
-            aboutus.Run();
-            aboutus.Destroy();
-        }
-
-        protected virtual void OnRefreshActionActivated (object sender, System.EventArgs e)
-        {
-            //FIXME: Not workee
-            //AddTwitts();
-        }
-    }
 }
